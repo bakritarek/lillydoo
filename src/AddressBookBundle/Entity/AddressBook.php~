@@ -3,7 +3,6 @@
 namespace AddressBookBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 /**
  * AddressBook
@@ -72,9 +71,9 @@ class AddressBook
     private $phonenumber;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="birthday", type="date", length=255)
+     * @ORM\Column(name="birthday", type="string", length=255)
      */
     private $birthday;
 
@@ -86,37 +85,12 @@ class AddressBook
     private $email;
 
     /**
-     * @ORM\Column(name="picture", type="text")
+     * @ORM\Column(type="string")
+     *
+     * @Assert\NotBlank(message="Please, upload the Picture of the address book.")
      *
      */
     private $picture;
-
-
-    /**
-     * @Assert\File(maxSize="6000000")
-     */
-    private $file;
-
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
-    }
-
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
 
 
     /**
@@ -344,16 +318,5 @@ class AddressBook
     {
         return $this->email;
     }
-
-    public function getPicture()
-    {
-        return $this->picture;
-    }
-
-    public function setPicture($picture)
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
 }
+

@@ -10,4 +10,31 @@ namespace AddressBookBundle\Repository;
  */
 class AddressBookRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function Search($word) {
+        $qb = $this->createQueryBuilder('ab')
+            ->where('ab.firstname like :word')
+            ->orWhere('ab.lastname like :word')
+            ->orWhere('ab.city like :word')
+            ->orWhere('ab.country like :word')
+            ->orWhere('ab.streetNumber like :word')
+            ->setParameter('word', '%'.addcslashes($word, '%_').'%')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function Count() {
+        $qb = $this->createQueryBuilder('ab')
+            ->select('count(ab.id)')
+        ;
+        return $qb->getQuery()->getResult();
+    }
+
+    public function CountCitys() {
+        $qb= $this->createQueryBuilder('ab')
+            ->select('count(Distinct(ab.city))')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

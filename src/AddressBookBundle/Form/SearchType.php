@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AddressBookType extends AbstractType
+class SearchType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,27 +16,15 @@ class AddressBookType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname')
-            ->add('lastname')
-            ->add('streetNumber')
-            ->add('zip')
-            ->add('city')
-            ->add('country')
-            ->add('phonenumber')
-            ->add('birthday', DateType::class, [
-                'widget' => 'single_text',
-            ])
-            ->add('email')
-            ->add('file', FileType::class, ['label' => 'Picture (Image file)'])
+            ->add('word')
+
         ;
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'AddressBookBundle\Entity\AddressBook'
-        ));
+
     }
 
     /**
@@ -44,7 +32,7 @@ class AddressBookType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'addressbookbundle_addressbook';
+        return 'search';
     }
 
 

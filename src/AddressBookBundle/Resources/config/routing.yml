@@ -1,3 +1,24 @@
 address_book_homepage:
     path:     /
     defaults: { _controller: AddressBookBundle:Default:index }
+address_book_error:
+    path:     /error
+    defaults: { _controller: AddressBookBundle:Default:Error }
+address_book_add:
+    path:     /add
+    defaults: { _controller: AddressBookBundle:AddressBook:Add }
+address_book_update:
+    path:     /update/{id}
+    defaults: { _controller: AddressBookBundle:AddressBook:Update }
+address_book_delete:
+    path:     /delete/{id}
+    defaults: { _controller: AddressBookBundle:AddressBook:Delete }
+address_book_display_all:
+    path:     /display-all
+    defaults: { _controller: AddressBookBundle:AddressBook:DisplayAll }
+address_book_display_search:
+    path:     /display-search/
+    defaults: { _controller: AddressBookBundle:AddressBook:DisplayResearch }
+address_book_store:
+    path:     /store/{id}
+    defaults: { _controller: AddressBookBundle:AddressBook:Store }
