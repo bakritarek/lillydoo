@@ -1,3 +1,15 @@
+
+New Functions
+========================
+The app contain new functions : 
+- Search Bar: 
+In the navbar you will find a search input, when a word is writen and the search button is clicked, a list of the contact who match the word are displayed.
+The criteria are : First Name, Last Name, City, Country and street 
+- Dashbord : The index page is a Dashbord page, it contain some numbers like : 
+ - The number of contact 
+ - The number of citys 
+ 
+
 Symfony Standard Edition
 ========================
 
